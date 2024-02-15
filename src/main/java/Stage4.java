@@ -3,32 +3,48 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Stage4{
+/**
+ * ClassName Stage4 for 4th stage of the project.
+ */
+public class Stage4 {
 
-    public static String readFile(String path) throws IOException{
+    /**
+     * @param path path of the file to extract the string
+     * @return String which contains the content of the file of the pathName path.
+     *@throws IOException for handling checked errors.
+     */
+    public static String readFile(final String path) throws IOException {
         return new String(Files.readAllBytes(Paths.get(path)));
     }
-    public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
+    /**
+     * @param args Array of string
+     * @throws IOException for handling checked errors.
+     * In this method,we get a file from which we have to extract the string
+     * and then make a menu driven program to find a person from the file or
+     * print the list of people in the file.
+     *
+     */
+    public static void main(final String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
         String fileName = args[1];
-        String txt = readFile(fileName);
-        String[] a = txt.split("\n");
-        List<String> listOfPeople = Arrays.stream(a).toList();
-        while(true) {
+        String fileText = readFile(fileName);
+        String[] fileInList = fileText.split("\n");
+        List<String> listOfPeople = Arrays.stream(fileInList).toList();
+        while (true) {
             System.out.println("=== Menu ===");
             System.out.println("1. Find a person");
             System.out.println("2. Print all people");
             System.out.println("0. Exit");
-            int choice = sc.nextInt();
-            sc.nextLine();
-            switch(choice){
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
                 case 0:
                     System.out.println("Bye!");
                     System.exit(0);
                     break;
                 case 1:
                     System.out.println("Enter a name or email to search all suitable people.");
-                    String query = sc.nextLine();
+                    String query = scanner.nextLine();
                     List<String> ans = getStrings(listOfPeople, query);
                     ans.forEach(System.out::println);
                     break;
@@ -43,14 +59,22 @@ public class Stage4{
         }
     }
 
-    private static List<String> getStrings(List<String> listOfPeople, String query) {
-        List<String>ans = new ArrayList<>();
+    /**
+     * @param listOfPeople List of input people
+     * @param query input query to search
+     * @return ans List of Strings which matches with the query.
+     *The method takes an input of number of people
+     *             and a query and performs the search operation in the list to get the result.
+     *
+     */
+    private static List<String> getStrings(final List<String> listOfPeople, final String query) {
+        List<String> ans = new ArrayList<>();
         for (String people : listOfPeople) {
-            String low = people.toLowerCase();
-            String kLow = query.toLowerCase();
-            int len = kLow.length();
-            for (int i = 0; i <= low.length() - len; i++) {
-                if (low.substring(i, i + len).equals(kLow)) {
+            String lowerCasePerson = people.toLowerCase();
+            String lowerCaseQuery = query.toLowerCase();
+            int length = lowerCaseQuery.length();
+            for (int i = 0; i <= lowerCasePerson.length() - length; i++) {
+                if (lowerCasePerson.substring(i, i + length).equals(lowerCaseQuery)) {
                     ans.add(people);
                     break;
                 }

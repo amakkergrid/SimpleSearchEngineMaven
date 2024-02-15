@@ -2,14 +2,27 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-public class Stage1{
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        String[] li = input.split(" ");
-        String query = sc.next();
-        Optional<Integer> op = Stream.iterate(0,idx->idx+1).limit(li.length).filter(idx->query.equals(li[idx])).findFirst();
-        op.ifPresentOrElse((idx->System.out.println(idx+1)),()->System.out.println("Not Found"));
+/**
+ * ClassName Stage1 for 1st stage of the project.
+ */
+public class Stage1 {
+    /**
+     * @param args Array of string
+     *The method prints the first occurance of the given query in the input
+     *             and if the query is not present it prints Not Found.
+     *
+     */
+    public static void main(final String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        String[] listOfWords = input.split(" ");
+        String query = scanner.next();
+        Optional<Integer> op = Stream.iterate(0, stringIndex -> stringIndex + 1)
+                .limit(listOfWords.length)
+                .filter(stringIndex -> query.equals(listOfWords[stringIndex]))
+                .findFirst();
+        op.ifPresentOrElse(stringIndex -> System.out.println(stringIndex + 1),
+                () -> System.out.println("Not Found"));
 
     }
 }
