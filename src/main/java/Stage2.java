@@ -2,31 +2,31 @@ import java.util.*;
 
 public class Stage2{
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of people:");
-        int numberOfPeople = sc.nextInt();
-        sc.nextLine();
+        int numberOfPeople = scanner.nextInt();
+        scanner.nextLine();
         List<String> listOfPeople = new ArrayList<>();
         System.out.println("Enter all people:");
         while(numberOfPeople!=0){
-            String s = sc.nextLine();
-            listOfPeople.add(s);
+            String person = scanner.nextLine();
+            listOfPeople.add(person);
             numberOfPeople--;
         }
         System.out.println("Enter the number of search queries:");
-        int numberOfQueries = sc.nextInt();
-        sc.nextLine();
+        int numberOfQueries = scanner.nextInt();
+        scanner.nextLine();
         while(numberOfQueries!=0){
             List<String>ans = new ArrayList<>();
             System.out.println("Enter data to search people:");
-            String k = sc.nextLine();
-            for(String ele : listOfPeople){
-                String low = ele.toLowerCase();
-                String kLow = k.toLowerCase();
-                int len = kLow.length();
-                for(int i=0;i<low.length()-len;i++){
-                    if(low.substring(i,i+len).equals(kLow)){
-                        ans.add(ele);
+            String numberOfSearch = scanner.nextLine();
+            for(String person : listOfPeople){
+                String lowerCasePerson = person.toLowerCase();
+                String lowerCaseQuery = numberOfSearch.toLowerCase();
+                int length = lowerCaseQuery.length();
+                for(int i=0;i<lowerCasePerson.length()-length;i++){
+                    if(lowerCasePerson.substring(i,i+length).equals(lowerCaseQuery)){
+                        ans.add(person);
                         break;
                     }
                 }

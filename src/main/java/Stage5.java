@@ -9,10 +9,10 @@ public class Stage5{
         return new String(Files.readAllBytes(Paths.get(path)));
     }
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String fileName = args[1];
-        String txt = readFile(fileName);
-        String[] inputText = txt.split("\n");
+        String fileInText = readFile(fileName);
+        String[] inputText = fileInText.split("\n");
         List<String> listOfPeople = Arrays.stream(inputText).toList();
         Map<String,ArrayList<Integer>> mapOfIndex = new HashMap<>();
         for(int i=0 ; i<listOfPeople.size() ; i++){
@@ -29,8 +29,8 @@ public class Stage5{
             System.out.println("1. Find a person");
             System.out.println("2. Print all people");
             System.out.println("0. Exit");
-            int choice = sc.nextInt();
-            sc.nextLine();
+            int choice = scanner.nextInt();
+            scanner.nextLine();
             switch(choice){
                 case 0:
                     System.out.println("Bye!");
@@ -38,7 +38,7 @@ public class Stage5{
                     break;
                 case 1:
                     System.out.println("Enter a name or email to search all suitable people.");
-                    String query = sc.nextLine();
+                    String query = scanner.nextLine();
                     if(mapOfIndex.get(query)!=null){
                         List<Integer> tempAns = mapOfIndex.get(query);
                         List<String> actualAns = new ArrayList<>();

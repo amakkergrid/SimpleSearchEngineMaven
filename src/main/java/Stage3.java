@@ -4,15 +4,15 @@ import static java.lang.System.exit;
 
 public class Stage3{
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of people:");
-        int numberOfPeople = sc.nextInt();
-        sc.nextLine();
+        int numberOfPeople = scanner.nextInt();
+        scanner.nextLine();
         List<String>listOfPeople = new ArrayList<>();
         System.out.println("Enter all people:");
         while(numberOfPeople!=0){
-            String s = sc.nextLine();
-            listOfPeople.add(s);
+            String person = scanner.nextLine();
+            listOfPeople.add(person);
             numberOfPeople--;
         }
         while(true) {
@@ -20,8 +20,8 @@ public class Stage3{
             System.out.println("1. Find a person");
             System.out.println("2. Print all people");
             System.out.println("0. Exit");
-            int choice = sc.nextInt();
-            sc.nextLine();
+            int choice = scanner.nextInt();
+            scanner.nextLine();
             switch(choice){
                 case 0:
                     System.out.println("Bye");
@@ -29,7 +29,7 @@ public class Stage3{
                     break;
                 case 1:
                     System.out.println("Enter a name or email to search all suitable people.");
-                    String query = sc.nextLine();
+                    String query = scanner.nextLine();
                     List<String> ans = getStrings(listOfPeople, query);
                     ans.forEach(System.out::println);
                     ans.clear();
@@ -48,11 +48,11 @@ public class Stage3{
     private static List<String> getStrings(List<String> listOfPeople, String query) {
         List<String> ans = new ArrayList<>();
         for (String people : listOfPeople) {
-            String low = people.toLowerCase();
-            String kLow = query.toLowerCase();
-            int len = kLow.length();
-            for (int i = 0; i <= low.length() - len; i++) {
-                if (low.substring(i, i + len).equals(kLow)) {
+            String lowerCasePerson = people.toLowerCase();
+            String lowerCaseQuery = query.toLowerCase();
+            int length = lowerCaseQuery.length();
+            for (int i = 0; i <= lowerCasePerson.length() - length; i++) {
+                if (lowerCasePerson.substring(i, i + length).equals(lowerCaseQuery)) {
                     ans.add(people);
                     break;
                 }
