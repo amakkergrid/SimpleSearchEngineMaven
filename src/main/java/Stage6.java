@@ -43,22 +43,23 @@ public class Stage6 {
             }
 
         }
-        while (true) {
-            System.out.println("=== Menu ===");
-            System.out.println("1. Find a person");
-            System.out.println("2. Print all people");
-            System.out.println("0. Exit");
+        boolean flag = true;
+        while (flag) {
+//            System.out.println("=== Menu ===");
+//            System.out.println("1. Find a person");
+//            System.out.println("2. Print all people");
+//            System.out.println("0. Exit");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
                 case 0:
                     System.out.println("Bye!");
-                    System.exit(0);
+                    flag = false;
                     break;
                 case 1:
-                    System.out.println("Select a matching strategy: ALL, ANY, NONE");
+//                    System.out.println("Select a matching strategy: ALL, ANY, NONE");
                     String strategy = scanner.nextLine();
-                    System.out.println("Enter a name or email to search all suitable people.");
+//                    System.out.println("Enter a name or email to search all suitable people.");
                     String query = scanner.nextLine();
                     String[] queryWord = query.split(" ");
                     Set<Integer> ansSet = new HashSet<>();
@@ -110,7 +111,7 @@ public class Stage6 {
 
                     break;
                 case 2:
-                    System.out.println("=== List of people ===");
+//                    System.out.println("=== List of people ===");
                     listOfPeople.forEach(System.out::println);
                     break;
                 default:

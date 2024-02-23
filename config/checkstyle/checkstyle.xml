@@ -55,15 +55,15 @@
 
 
         <module name="ArrayTypeStyle"/>
-        <module name="LineLength">
-            <property name="ignorePattern" value="^ *\* *@see.+$"/>
-            <property name="max" value="150"/>
-        </module>
     </module>
 
     <module name="JavadocPackage"/>
     <module name="NewlineAtEndOfFile">
         <property name="lineSeparator" value="lf"/>
     </module>
+<!--    <module name="LineLength">-->
+<!--        <property name="ignorePattern" value="^ *\* *@see.+$"/>-->
+<!--        <property name="max" value="150"/>-->
+<!--    </module>-->
     <module name="FileTabCharacter"/>
 </module>

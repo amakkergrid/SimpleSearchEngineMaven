@@ -36,28 +36,30 @@ public class Stage5 {
             String eachLine = listOfPeople.get(i);
             String[] words = eachLine.split(" ");
             for (String eachWord : words) {
-                mapOfIndex.putIfAbsent(eachWord, new ArrayList<>());
-                mapOfIndex.get(eachWord).add(i);
+                mapOfIndex.putIfAbsent(eachWord.toLowerCase(), new ArrayList<>());
+                mapOfIndex.get(eachWord.toLowerCase()).add(i);
             }
 
         }
-        while (true) {
-            System.out.println("=== Menu ===");
-            System.out.println("1. Find a person");
-            System.out.println("2. Print all people");
-            System.out.println("0. Exit");
+        boolean flag = true;
+        while (flag) {
+//            System.out.println("=== Menu ===");
+//            System.out.println("1. Find a person");
+//            System.out.println("2. Print all people");
+//            System.out.println("0. Exit");
             int choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
                 case 0:
                     System.out.println("Bye!");
-                    System.exit(0);
+                    flag = false;
                     break;
                 case 1:
-                    System.out.println("Enter a name or email to search all suitable people.");
+//                    System.out.println("Enter a name or email to search all suitable people.");
                     String query = scanner.nextLine();
-                    if (mapOfIndex.get(query) != null) {
-                        List<Integer> tempAns = mapOfIndex.get(query);
+                    String queryInLowerCase = query.toLowerCase();
+                    if (mapOfIndex.get(queryInLowerCase) != null) {
+                        List<Integer> tempAns = mapOfIndex.get(queryInLowerCase);
                         List<String> actualAns = new ArrayList<>();
                         for (int ind:tempAns) {
                             actualAns.add(listOfPeople.get(ind));
@@ -71,7 +73,7 @@ public class Stage5 {
 
                     break;
                 case 2:
-                    System.out.println("=== List of people ===");
+//                    System.out.println("=== List of people ===");
                     listOfPeople.forEach(System.out::println);
                     break;
                 default:

@@ -53,10 +53,5 @@ public class Stage2 {
             numberOfQueries--;
             ans.clear();
         }
-
-
-
-
-
     }
 }

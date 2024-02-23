@@ -16,30 +16,30 @@ public class Stage3 {
      */
     public static void main(final String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the number of people:");
+//        System.out.println("Enter the number of people:");
         int numberOfPeople = scanner.nextInt();
         scanner.nextLine();
         List<String> listOfPeople = new ArrayList<>();
-        System.out.println("Enter all people:");
+//        System.out.println("Enter all people:");
         while (numberOfPeople != 0) {
             String person = scanner.nextLine();
             listOfPeople.add(person);
             numberOfPeople--;
         }
-        while (true) {
-            System.out.println("=== Menu ===");
-            System.out.println("1. Find a person");
-            System.out.println("2. Print all people");
-            System.out.println("0. Exit");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+        boolean exit = false;
+        while (!exit) {
+//            System.out.println("=== Menu ===");
+//            System.out.println("1. Find a person");
+//            System.out.println("2. Print all people");
+//            System.out.println("0. Exit");
+            int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 0:
                     System.out.println("Bye");
-                    exit(0);
+                    exit = true;
                     break;
                 case 1:
-                    System.out.println("Enter a name or email to search all suitable people.");
+//                    System.out.println("Enter a name or email to search all suitable people.");
                     String query = scanner.nextLine();
                     List<String> ans = getStrings(listOfPeople, query);
                     ans.forEach(System.out::println);
